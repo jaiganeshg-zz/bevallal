@@ -46,6 +46,7 @@ angular.module('starter.controllers', [])
     $scope.getFood = function() {
         var data = {
             offerer_phone: $scope.chat.phone,
+            id: $scope.chat._id,
             receiver_phone: localStorage.getItem("mobilenumber"),
         };
              ChatLog.getFood($http, data);
@@ -65,7 +66,7 @@ angular.module('starter.controllers', [])
             $scope.mobilenumber = $scope.data.mobilenumber;
             console.log("logggggggggggggggggg");
             console.log(data);
-            localStorage.setItem("mobilenumber", data.mobilenumber);
+            localStorage.setItem("mobilenumber", $scope.mobilenumber);
             localStorage.setItem("type", data.type);
             if (data.type=='partyhall') {
                 $scope.partyhall = true;
@@ -98,8 +99,9 @@ angular.module('starter.controllers', [])
     }
     console.log("heree123");
 
-    $scope.donateFood = function() {
-      $scope.data.donateFood = true;
+    $scope.donateFood = function() {      
+      $scope.data.donateFood = false;
+      $scope.data.donateDiv = true;
       $scope.mobilenumber = localStorage.getItem("mobilenumber");
       var $data = {
         offerer_phone: $scope.mobilenumber,
