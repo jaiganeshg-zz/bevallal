@@ -41,8 +41,6 @@ angular.module('starter.services', [])
 
             var str="http://192.168.16.199:4000/api/createOrphanage";
 		    	$http.post(str, data).success(function (response){
-            //$scope.response = res.data;
-            response = null;
               if(response) {
                 console.log(response);
                 deferred.resolve('Welcome ' + response.name + '!');
@@ -177,6 +175,43 @@ angular.module('starter.services', [])
               console.log(response);
               if(response) {
                 deferred.resolve('Welcome ' + response.name + '!');
+              }
+              else {
+                deferred.reject('Wrong credentials.');
+              }
+
+            });
+ 
+            promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+        }
+    }
+})
+
+
+.service('AccoutService', function($q) {
+    return {
+        getHistory: function($http, mobilenumber) {
+
+          console.log("Data received in service");
+          console.log(mobilenumber);
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+
+            var str="http://192.168.16.199:4000/api/getPreviousRequests?phone="+mobilenumber;
+			$http.get(str)
+			      .success(function (response){
+              console.log("getPreviousRequests");
+              console.log(response);
+              if(response) {
+                deferred.resolve(response);
               }
               else {
                 deferred.reject('Wrong credentials.');

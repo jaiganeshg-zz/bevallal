@@ -1,9 +1,14 @@
-<ion-view view-title="Account">
+<ion-view view-title="History">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="history in userhistory" type="item-text-wrap">
+        <!--<img ng-src="{{chat.face}}">
+        <h2>{{chat.offerer_phone}}</h2>
+        <p>{{chat.count}}</p>-->
+
+        <span class="positive">Sponsor name</span><h2>{{history.name}}</h2>
+        <span class="positive">Quantity</span><p>{{history.count}}</p>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

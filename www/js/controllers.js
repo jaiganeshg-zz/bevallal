@@ -125,8 +125,15 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AccountCtrl', function($scope, $http, AccoutService, $ionicPopup, $state) {
+
+  AccoutService.getHistory($http, localStorage.getItem("mobilenumber")).success(function(hisotry) {            
+            $scope.userhistory = hisotry;
+            console.log("Getprevious hisotry");
+            console.log(hisotry);
+        })
+        .error(function() {
+            console.log('chat retrieval failed.');
+        });
+
 });
