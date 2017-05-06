@@ -63,7 +63,13 @@ angular.module('starter.controllers', [])
     $scope.login = function() {
         LoginService.loginUser($http, $scope.data.mobilenumber).success(function(data) {
             $scope.mobilenumber = $scope.data.mobilenumber;
-            localStorage.setItem("mobilenumber", $scope.mobilenumber);
+            console.log("logggggggggggggggggg");
+            console.log(data);
+            localStorage.setItem("mobilenumber", data.mobilenumber);
+            localStorage.setItem("type", data.type);
+            if (data.type=='partyhall') {
+                $scope.partyhall = true;
+            }
             $state.go('tab.dash');
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
@@ -75,10 +81,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DashCtrl', function($scope, $http, DonateService, $ionicPopup, $state) {
-    $scope.data = {
-      donateFood: true,
-    };
- 
+    $scope.data = {};
+
+    var type = localStorage.getItem("type");
+    console.log(type);
+    if (type == 'partyhall') {
+        $scope.data.partyhall = true;
+        $scope.data.donateFood = false;
+        $scope.data.donateDiv = true;
+        console.log("heree");
+    }
+    else {
+        $scope.data.donateFood = true;
+        $scope.data.donateDiv = true;
+        $scope.data.receiver = true;
+    }
+    console.log("heree123");
+
     $scope.donateFood = function() {
       $scope.data.donateFood = true;
       $scope.mobilenumber = localStorage.getItem("mobilenumber");
@@ -105,7 +124,8 @@ angular.module('starter.controllers', [])
 
     $scope.donateOptionOpen = function() {
       console.log("Donate option open");
-      $scope.data.donateFood = false;
+      $scope.data.donateFood = true;
+      $scope.data.donateDiv = false;
     }
 })
 

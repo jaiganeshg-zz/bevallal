@@ -10,7 +10,7 @@ angular.module('starter.services', [])
 			$http.get(str)
 			      .success(function (response){
               if(response) {
-                deferred.resolve('Welcome ' + response.name + '!');
+                deferred.resolve(response);
               }
               else {
                 deferred.reject('Wrong credentials.');
