@@ -1,0 +1,20 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.offerer_phone}}">
+        <!--<img ng-src="{{chat.face}}">
+        <h2>{{chat.offerer_phone}}</h2>
+        <p>{{chat.count}}</p>-->
+
+        <span class="input-label positive">Sponsor Phone</span><h2>{{chat.offerer_phone}}</h2>
+        <span class="input-label positive">Quantity</span><p>{{chat.count}}</p>
+
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

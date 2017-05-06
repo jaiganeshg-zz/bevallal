@@ -1,0 +1,46 @@
+<ion-view title="Signup">
+    <ion-content padding="'true'" scroll="false" class="has-header">
+        <form class="list">
+
+            <ion-list>
+                <div class="item item-input">
+                    <span class="input-label positive">Type</span>
+                    <ion-radio ng-model="data.type" ng-value="'Sender'" >Sender</ion-radio><br>
+                    <ion-radio ng-model="data.type" ng-value="'Receiver'" >Receiver</ion-radio>
+                </div>
+                </ion-list>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label positive">Phone</span>
+                    <input type="number" placeholder="" ng-model="data.phone">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label positive">Name</span>
+                    <input type="text" placeholder="" ng-model="data.name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label positive">Owner Name</span>
+                    <input type="text" placeholder="" ng-model="data.owner_name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label positive">Email</span>
+                    <input type="text" placeholder="" ng-model="data.email">
+                </label>
+            </ion-list>
+            <label class="item item-input">
+                <span class="input-label positive">Address</span>
+                <input type="text" placeholder="" ng-model="data.address">
+            </label>
+            <label class="item item-input">
+                <span class="input-label positive">Area</span>
+                <select ng-model="data.area">
+                    <option selected>Velachery</option>
+                    <option>Adambakkam</option>
+                    <option>Guindy</option>
+                </select>
+            </label>
+			
+            <button ng-click="signup(data)" class="button button-block button-calm ">Sign up</button>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-view view-title="Home">
+  <ion-content class="padding">
+    <h2>Welcome to Be Vallal</h2>
+    <p>
+      Please share the excess food you have with the needys
+    </p>
+    <div ng-hide="!data.donateFood">
+    <button ng-click="donateOptionOpen()"> Donate Food</button>  
+    </div>
+
+    <div ng-hide="data.donateFood">
+      <ion-list>
+                <label class="item item-input">
+                    <span class="input-label positive">count</span>
+                    <input type="number" placeholder="" ng-model="data.count">
+                </label>
+                <button ng-click="donateFood(data)" class="button button-block button-calm ">Donate</button>
+            </ion-list>
+    </div>
+  </ion-content>
+</ion-view>
